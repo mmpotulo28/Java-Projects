@@ -8,12 +8,11 @@ import java.io.IOException;
 //the reset
 import java.util.Random;
 
-public final class App { //if the name of your file
+public final class App { // if the name of your file
 
     /*
      * crerating a program to randomly generate sentences
      * the has to write those sentences on a file
-     * 
      */
 
     // global variable declaration

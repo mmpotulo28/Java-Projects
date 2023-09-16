@@ -8,149 +8,95 @@ import java.util.Scanner;
  */
 public class App {
 
-    static int start = 0;
+    // DECLARE VARIABLES
+    static int base;
+    static int limit;
+    static int multiple = 0;
+    static int result;
+    static int num;
 
     public static void main(String[] args) {
-
-        // decalre local variables
-        int option;
-        int startingP;
-        int num1;
-        int base;
-        boolean running = true;
-
-        // Create scanner object to get the option
+        /*
+         * CREATE A TABLE OF MULTIPLES OF AN INTEGER
+         * REQUEST A USER TO ENTER A BASE NUMBER
+         * REQUEST A USER TO ENTER I LIMIT
+         */
         Scanner scanner = new Scanner(System.in);
 
-        while (running) {
+        System.out.println("1. Table of multiples.");
+        System.out.println("2. Even or Odd.");
+        System.out.printf("\n\nChoose an option: ");
+        int option = scanner.nextInt();
 
-            // clear terminal
-            System.out.print("\033[H\033[2J");
+        switch (option) {
+            case 1:
+                // request user input for base and multiple
+                System.out.printf("Enter base number: ");
+                base = scanner.nextInt();
+                System.out.printf("\nEnter table limit: ");
+                limit = scanner.nextInt();
+                // call the recursive method
+                multipleRecursion();
+                break;
+            case 2:
+                // check if a number is odd or even
+                System.out.printf("Enter starting number: ");
+                num = scanner.nextInt();
+                System.out.printf("\nEnter the last number: ");
+                limit = scanner.nextInt();
+                oddOreven();
+                break;
 
-            //reset varaible
-            option = 0;
-            running = true;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
 
-            // setup main menu
-            System.out.println("********************************************");
-            System.out.println("Welcome: what would you like to do?\n");
-            System.out.println("\t1: Count Up to 10 using recursion.");
-            System.out.println("\t2: Check which numbers are even or odd.");
-            System.out.println("\t3: Calculate the power of a number.");
-            System.out.println("\t4: Exit program.");
-
-            System.out.printf("\nChoose 1 option: ");
-            option = scanner.nextInt(); // get integer value from scanner
-            System.out.println("*******************************************");
-
-            switch (option) {
-                case 1:// clear terminal
-                    System.out.print("\033[H\033[2J");
-                    System.out.printf("\nEnter staring point: ");
-                    startingP = scanner.nextInt();
-
-                    counterRecursion(startingP);
-                    System.out.println("\n");
-                    break;
-
-                case 2:// clear terminal
-                    System.out.print("\033[H\033[2J");
-                    // get 1st number
-                    System.out.printf("\nEnter staring number (up to 9): ");
-                    num1 = scanner.nextInt();
-
-                    // call checking function
-                    oddOReven(num1);
-                    System.out.println("\n");
-                    break;
-
-                case 3: /// power of a number
-                    // clear terminal
-                    System.out.print("\033[H\033[2J");
-
-                    // get base
-                    System.out.printf("\nEnter base: ");
-                    base = scanner.nextInt();
-
-                    // call function to calculate
-                    mathPower(base, 1);
-                    System.out.println("\n");
-                    break;
-
-                case 4:
-                    // clear terminal
-                    System.out.print("\033[H\033[2J");
-                    running = false;
-                    System.out.println("Goodbye\n");
-                    break;
-
-                default:// clear terminal
-                    System.out.print("\033[H\033[2J");
-                    System.out.println("Error: wrong option, enter a number between 1-3.");
-                    break;
-            }
-
-            // ask if user would like to continue or exit
-            if (running) {
-                System.out.println("\nWould you like to continue? (y/n)");
-                String answer = scanner.next();
-
-                if (answer.equals("n")) {
-                    running = false;
-                    System.out.println("\nGoodbye\n");
-                } else {
-                    running = true;
-                }
-            }
-        } // end while
-
-        // close scanner
         scanner.close();
 
-    }
+    }// end main function
 
-    /********************* counter recursion function**** */
-    public static int counterRecursion(int n) {
-        if (n > 10) { // set a limit to avoid infinite loop
-            return 0; // return 0 to stop the function
+    // recursive method
+    public static int multipleRecursion() {
+
+        /*
+         * limit in if statements inside the recursiove method
+         * user float/double, ==, error if 2.3, 2>3
+         * newline char \n
+         */
+        if (multiple >= limit) {
+            return 0; // break the method
         } else {
-            start = n;
-            System.out.println(start); // print the value of n
+            result = base * multiple;
+            // System.out.printf("\n %d * %d = %d", base, multiple, result);
+            System.out.println(base + " * " + multiple + " = " + result);
+
+            // increment the multiple
+            multiple++;
+
+            // kwi return statement you recall the function
+            return multipleRecursion();
         }
 
-        // recall the function
-        return counterRecursion(start + 1);
-    }
+    }// end recursive
 
-    /********************* odd or even recursion function**** */
-    public static int oddOReven(int num) {
-
-        // set a recursion limit
-        if (num > 10) {
-            return 0;
-        } else {
-            start = num;
-
-            // check if start is even or odd
-            if (start % 2 == 0) {
-                System.out.println(start + " is even");
-            } else {
-                System.out.println(start + " is odd");
+    // odd of even function
+    public static int oddOreven() {
+        if (num <= limit) {
+            // check uf it is even
+            if (num % 2 == 0) {// then its even
+                System.out.println(num + " is Even");
+            } else { // else its odd
+                System.out.println(num + " is odd");
             }
 
-            return oddOReven(start + 1);
-        }
-    }
+            // increment the starting number (num)
+            num++;
 
-    /********************* math power recursion function**** */
-    public static int mathPower(int base, int power) {
-        if (power == 0 || power == 10) { // set recursion limit
-            return 1;
+            // then recall the function
+            return oddOreven();
         } else {
-            start = (int) Math.pow(base, power); // Math.pow returns a double, cast to int
-            System.out.println(base + "^" + power + " = " + start);
-
-            return mathPower(base, power + 1); // recall function and increment power
+            return 0;
         }
     }
 
