@@ -46,7 +46,6 @@ public class App {
                 limit = scanner.nextInt();
                 oddOreven();
                 break;
-
             default:
                 System.out.println("Invalid option");
                 break;
