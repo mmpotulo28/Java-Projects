@@ -1,10 +1,10 @@
 package com.arrays2;
 
 import java.util.Random;
-import java.util.Arrays;
 
 /**
  * Hello world!
+ * will join you in a sec
  */
 public final class App {
     private App() {
@@ -27,7 +27,7 @@ public final class App {
      * i also want to give you an intro on classes and how to use classes to work
      * with data
      * on different files.
-     * 
+     * what are we doing today?
      * @param args The arguments of the program.
      */
 

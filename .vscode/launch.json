@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.classes.App"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.practise.pheli.App"
+        }
+    ]
+}
