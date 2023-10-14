@@ -12,6 +12,8 @@ public class App {
 
     // creare student records object
     static StudentRecords student = new StudentRecords();
+    // create a generics object
+    static Generics generics = new Generics();
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -25,9 +27,10 @@ public class App {
 
             // menu
             System.out.println("1. use Get and Set methods to for student records:");
-            System.out.println("2. Use Generics to set and get student records:");
+            System.out.println("2. Use ArrayList to set and get student records:");
             System.out.println("3. Search for a Student:");
-            System.out.println("4. Exit:");
+            System.out.println("4. Use linkedList:");
+            System.out.println("5. Exit:");
 
             System.out.println("\nWhat would you like to do?: ");
             int opt = scan.nextInt();
@@ -45,7 +48,11 @@ public class App {
                     searchStudent();
                     break;
 
-                case 4: // exit the program
+                case 4: // call the menu method on Generics
+                    generics.menu();
+                    break;
+
+                case 5: // exit the program
                     exit = true;
                     break;
 
