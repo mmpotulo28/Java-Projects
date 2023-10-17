@@ -1,5 +1,11 @@
 package com.arrays2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,143 +34,109 @@ public final class App {
      * with data
      * on different files.
      * what are we doing today?
+     * 
      * @param args The arguments of the program.
      */
 
     public static void main(String[] args) {
-
         // clear terminal
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
-        int[] randomArray = new int[10];
-        Random random = new Random();
+        Random rand = new Random();
 
-        // randomly generate the array
-        for (int i = 0; i < randomArray.length; i++) {
-            randomArray[i] = random.nextInt(0, 10);
+        // generate a double array with random numbers
+        Double[] arr = new Double[10];
+        for (int i = 0; i < arr.length; i++) {
+            Double doubleNumber = rand.nextDouble(1.0, 50.0);
+            arr[i] = Math.round(doubleNumber * 10.0) / 10.0;
         }
 
-        // print original array
-        System.out.println("Original Array");
-        printArray(randomArray);
-
-        // sort the array 1st
-        randomArray = sortArray(randomArray);
-
-        // print sorted array
-        System.out.println("\nSorted Array");
-        printArray(randomArray);
-
-        // search for the element (binary search) fucntion
-        int element = 5;
-        int index = binarySearch(randomArray, element);
-        // print the index of the element
-        System.out.println("\nIndex of " + element + " is " + index);
-
-        // linear search
-        int index2 = linearSearch(randomArray, 6);
-        System.out.println("\nIndex of " + 6 + " is " + index2);
-
-        // slecttion sort
-        randomArray = selectionSort(randomArray);
-        System.out.println("\nSelection Sort");
-        printArray(randomArray);
-
-        // remove duplicates
-        int[] array2 = removeDuplicates(randomArray);
-        System.out.println("\nRemove Duplicates");
-        printArray(array2);
-
-    }
-
-    public static void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
-        }
-        System.out.println("\n");
-    }
-
-    public static int[] sortArray(int[] array) {
-        int temp = 0;
-
-        // sort the array insertion sort
-        for (int i = 0; i < array.length; i++) { // this outer loop will run forward and starts at 0
-            for (int j = i; j > 0; j--) { // this inner loop will run backwards and starts at current pos
-                if (array[j] < array[j - 1]) { // if the element at current pos is less than the in previous pos
-                    temp = array[j];
-                    array[j] = array[j - 1];
-                    array[j - 1] = temp;
-                }
-            }
+        // generate an int array with random numbers
+        int[] arr2 = new int[10];
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = rand.nextInt(1, 15);
         }
 
-        return array;
-    }
+        // print the arrays
+        System.out.println("Double Arrray");
+        printArray(arr);
+        System.out.println("Int Arrray");
+        printIntArr(arr2);
 
-    public static int binarySearch(int[] array, int element) {
-        int start = 0;
-        int end = array.length - 1;
+        // remove dublicates
+        /*
+         * 1. Genenerics
+         * 2. Arrays
+         */
 
-        // loop through the array
-        while (start <= end) {
-            int midpoint = (start + end) / 2;
-
-            // if the element is at the midpoint
-            if (array[midpoint] == element) {
-                return midpoint; // if you got the eelement return the index
-            } else if (array[midpoint] < element) { // if the element is greater than the element at midpoint
-                start = midpoint + 1;
-            } else { // if the element is less than the element at midpoint
-                end = midpoint - 1;
-            }
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < arr2.length; i++) {
+            set.add(arr2[i]);
         }
 
-        return -1; // if you did not find the element return -1
+        // print set
+        System.out.println(set);
 
-    }
+        // differences between ArrayList, LinkedList, and Hashset/HashMap
+        // add items kwi ArrayList and LinkedList
 
-    public static int linearSearch(int[] array, int element) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == element) {
-                return i; // if you got the eelement return the index
-            }
+        ArrayList<Integer> arrList = new ArrayList<Integer>();
+        LinkedList<Integer> linkList = new LinkedList<Integer>();
+        HashSet<Integer> hashSet = new HashSet<Integer>();
+        HashMap<String, Double> hashMap = new HashMap<String, Double>();
+
+        for (int i = 0; i < 10; i++) {
+            arrList.add(i); // add to the end of the list
+            linkList.add(i); // add to the end of the list
+            hashSet.add(i); // add to the end of the list
         }
 
-        return -1; // if you did not find the element return -1
+        genericPrint(arrList);
+
+        // // remove items from the list
+        // arrList.remove(0); // remove the first item
+        // arrList.remove(arrList.size() - 1); // remove the last item
+
+        // linkList.remove(0); // remove the first item
+        // linkList.remove(linkList.size() - 1); // remove the last item
+
+        // hashSet.remove(0); // remove the first item
+        // hashSet.remove(hashSet.size() - 1); // remove the last item
+
+        // we want hashMap of fruits and their prices
+        // we want to be able to get the price of a fruit by its name
+        hashMap.put("apple", 2.99);
+        hashMap.put("banana", 1.99);
+        hashMap.put("orange", 3.99);
+
+        // retrieve the price of a fruit
+        // System.out.println("Apple price: " + hashMap.get("apple"));,,
     }
 
-    public static int[] selectionSort(int[] array) {
-        int temp = 0;
-
-        // sort the array selectionSort
-        for (int i = 0; i < array.length; i++) { // this outer loop iterate multiple times
-            for (int j = 0; j < array.length - 1; j++) { // this checks the current element with the next
-                if (array[j] < array[j + 1]) {
-                    temp = array[j]; // swap the elements
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
+    public static void printArray(Double[] arr) {
+        for (Double d : arr) {
+            System.out.print(d + " ");
         }
-
-        return array;
+        System.out.println();
     }
 
-    public static int[] removeDuplicates(int[] array) {
-        int[] temp = new int[array.length]; // create new array
-        int j = 0;
-
-        // this method requuires an array to be sorted
-        for (int i = 0; i < array.length - 1; i++) { // loop throigh the array
-            if (array[i] != array[i + 1]) {
-                temp[j++] = array[i]; // if its not duplicate add it to the new array
-            }
+    public static void printIntArr(int[] arr) {
+        for (int d : arr) {
+            System.out.print(d + " ");
         }
-
-        temp[j++] = array[array.length - 1]; // add the last element since we did not check it
-
-        return temp;
+        System.out.println();
     }
+
+    // create a generic method that prints an array of any type
+    public static <T> void genericPrint(List<T> arr) {
+        for (T d : arr) {
+            System.out.print(d + " ");
+        }
+        System.out.println();
+    }
+    // get your ass back here!
+    // unganya mntam
+    // HAY SEE YOU TOMORROW!
 
 }

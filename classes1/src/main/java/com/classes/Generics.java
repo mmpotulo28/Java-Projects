@@ -28,7 +28,8 @@ public class Generics {
             System.out.println("3. Remove a Student:");
             System.out.println("4. Update a Student:");
             System.out.println("5. Print All records:");
-            System.out.println("6. Exit:");
+            System.out.println("6. Generic recursion method");
+            System.out.println("7. Exit:");
 
             System.out.println("\nWhat would you like to do?: ");
             int opt = scan.nextInt();
@@ -54,8 +55,8 @@ public class Generics {
                     printAllLinked();
                     break;
 
-                case 6: // exit the program
-                    exit = true;
+                case 6: // call generic recursive
+                    genericRecursive(null);
                     break;
 
                 default:
@@ -222,5 +223,10 @@ public class Generics {
         } else {
             System.out.println("Student Number: " + num + " does not exist!");
         }
+    }
+
+    // sort arrayList using Generic recursive method
+    private <T> void genericRecursive(T[] array) {
+           
     }
 }

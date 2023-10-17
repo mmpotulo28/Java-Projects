@@ -2,12 +2,6 @@ package com.classes;
 
 import java.util.Scanner;
 
-//import your class
-
-/**
- * Hello world!
- *
- */
 public class App {
 
     // creare student records object
