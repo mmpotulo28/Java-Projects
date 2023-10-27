@@ -4,6 +4,13 @@
             "type": "java",
             "name": "App",
             "request": "launch",
+            "mainClass": "com.arrays.App",
+            "projectName": "arrays"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
             "mainClass": "com.arrays2.App",
             "projectName": "arrays2"
         },

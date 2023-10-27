@@ -1,81 +1,155 @@
 package com.arrays;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+
 public class App {
 
-    // global varibales
-
     public static void main(String[] args) {
+        // create a new JFrame
+        final JFrame frame = new JFrame("Company Data Logger");
 
-        // local varibales
-        int[] array1 = { 3, 2, 5, 1, 4 };
-        int searchElem = 6;
+        // create a new JPanel
+        final JPanel panel = new JPanel();
 
-        // linear Searching
-        // linearSearching(array1, searchElem); // pass parameters to the method
-        System.out.println("\nOriginal Array:");
-        for (int i = 0; i < array1.length; i++) {
-            System.out.print(array1[i]);
-        }
+        // create comany name field
+        final JLabel companyNameLabel = new JLabel("Company Name:");
+        final JTextField companyNameField = new JTextField(20);
 
-        System.out.println("\n");
+        // date of registration field
+        final JLabel dateOfRegistrationLabel = new JLabel("Date of Registration:");
+        final JTextField dateOfRegistrationField = new JTextField(20);
 
-        // selection sort
-        System.out.println("Sorted Array:");
-        selectionSort(array1);
+        // number of empleyees
+        final JLabel numberOfEmployeesLabel = new JLabel("Number of Employees:");
+        final JTextField numberOfEmployeesField = new JTextField(20);
 
-        // uphinde ub
-    }
+        // is it charitable checkbox
+        final JLabel isItCharitableLabel = new JLabel("Is it Charitable:");
+        final JCheckBox isItCharitableCheckBox = new JCheckBox();
 
-    // recieve those passed parameters
-    // when accepting parameters in Java you have to specify the data types you want
-    // them to be
+        // submit button
+        final JButton submitButton = new JButton("Submit");
 
-    public static void linearSearching(int[] arr, int elem) {
+        // SET ALL LABELS TO BOLD AND HAVE THE SAME WITH
+        companyNameLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        dateOfRegistrationLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        numberOfEmployeesLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        isItCharitableLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
-        int position = -1;
-        // we want to search for "elem" on the "arr" array
-        // loop throught the array and compare each element with elem
-        for (int i = 0; i < arr.length; i++) {
-            // if the current element on the array is equal to "elem"
-            if (arr[i] == elem) {
-                position = i; // print on the method instead of on the main method
-                System.out.println(elem + " was found at position: " + i);
-                break; // stop the loop
-            }
-        }
+        // SET ALL FIELDS TO HAVE THE SAME FONT
+        companyNameField.setFont(new Font("Serif", Font.BOLD, 20));
+        dateOfRegistrationField.setFont(new Font("Serif", Font.BOLD, 20));
+        numberOfEmployeesField.setFont(new Font("Serif", Font.BOLD, 20));
 
-        // if we did not find the element
-        if (position == -1) {
-            System.out.println(elem + " was not found on the array!");
-        }
-    }
+        // SET THE CHECKBOX TO BE UNSELECTED BY DEFAULT
+        isItCharitableCheckBox.setSelected(false);
 
-    /************* Selection Sorting algrotithm *****/
-    public static void selectionSort(int[] arr) {
-        int min = 0;
+        // LEFT ALIGN ALL LABELS
+        companyNameLabel.setHorizontalAlignment(JLabel.LEFT);
+        dateOfRegistrationLabel.setHorizontalAlignment(JLabel.LEFT);
+        numberOfEmployeesLabel.setHorizontalAlignment(JLabel.LEFT);
+        isItCharitableLabel.setHorizontalAlignment(JLabel.LEFT);
 
-        // sort the recived arr in ascending order
-        // loop throught the array
-        for (int j = 0; j < arr.length * 2; j++) { // recheck the arrays multiple times
+        // RIUGHT ALIGN ALL FIELDS
+        companyNameField.setHorizontalAlignment(JTextField.RIGHT);
+        dateOfRegistrationField.setHorizontalAlignment(JTextField.RIGHT);
+        numberOfEmployeesField.setHorizontalAlignment(JTextField.RIGHT);
 
-            //innerLoop is for swapping (sorting)
-            for (int i = 0; i < arr.length - 1; i++) { // loop thorugh the array
-                // compare the current element with the next, if its bigger, then swap
-                //do this till the last element
-                if (arr[i] > arr[i + 1]) {
-                    min = arr[i + 1];
-                    arr[i + 1] = arr[i];
-                    arr[i] = min;
+        // add padding to fields
+        companyNameField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        dateOfRegistrationField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10,
+                10));
+        numberOfEmployeesField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10,
+                10));
+        isItCharitableCheckBox.setBorder(BorderFactory.createEmptyBorder(20, 20, 20,
+                20));
+
+        // ADD BORDER TO FIELDS
+        companyNameField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        dateOfRegistrationField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        numberOfEmployeesField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        isItCharitableCheckBox.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        // add some margin to the button
+        submitButton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        // submit button font size
+        submitButton.setFont(new Font("Serif", Font.BOLD, 20));
+        // align button to centre
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // add the label and the text field to the panel
+        panel.add(companyNameLabel);
+        panel.add(companyNameField);
+        panel.add(dateOfRegistrationLabel);
+        panel.add(dateOfRegistrationField);
+        panel.add(numberOfEmployeesLabel);
+        panel.add(numberOfEmployeesField);
+        panel.add(isItCharitableLabel);
+        panel.add(isItCharitableCheckBox);
+        panel.add(submitButton);
+
+        // set the size of the frame
+        frame.setSize(400, 600);
+
+        // add the panel to the frame
+        frame.add(panel);
+
+        // make the frame visible
+        frame.setVisible(true);
+
+        // set default close operation
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // when submit is clicked show the data in a new window
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // create a new JFrame
+                JFrame frame = new JFrame("Company Data");
+
+                // create a new JPanel
+                JPanel panel = new JPanel();
+
+                // get the input from the fields
+                String companyName = companyNameField.getText();
+                String dateOfRegistration = dateOfRegistrationField.getText();
+                String numberOfEmployees = numberOfEmployeesField.getText();
+                String isItCharitable = isItCharitableCheckBox.isSelected() ? "Yes" : "No";
+
+                // write the data to file txt
+                File file = new File("company.txt");
+                FileWriter fr;
+                try {
+                    fr = new FileWriter(file, true);
+                } catch (IOException e1) {
+                    System.out.println("Error writing to file");
+                    return;
                 }
+
+                BufferedWriter br = new BufferedWriter(fr);
+
+                try {
+                    br.write("Company Name: " + companyName + "\n");
+                    br.write("Date of Registration: " + dateOfRegistration + "\n");
+                    br.write("Number of Employees: " + numberOfEmployees + "\n");
+                    br.write("Is it Charitable: " + isItCharitable + "\n");
+                    br.write("\n");
+
+                    br.close();
+                    fr.close();
+                } catch (IOException e1) {
+                    System.out.println("Error writing to file");
+                }
+
             }
+        });
 
-        }//outer loop
-
-        //print the array
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%d", arr[i]);
-        }
- 
     }
-
 }

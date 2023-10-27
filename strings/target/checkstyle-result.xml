@@ -12,6 +12,4 @@
 <error line="52" column="29" severity="error" message="&apos;6&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
 <error line="76" column="44" severity="error" message="&apos;5&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
 </file>
-<file name="C:\Users\Sam\OneDrive - Cape Peninsula University of Technology\programming\Java Projects\strings\src\test\java\com\practise\AppTest.java">
-</file>
 </checkstyle>
