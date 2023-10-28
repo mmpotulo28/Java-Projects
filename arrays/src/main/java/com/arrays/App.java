@@ -17,13 +17,13 @@ public class App {
         // setframe background
         frame.getContentPane().setBackground(Color.GRAY);
 
+        /***************** PANEL 1 ****************/
         // / create first panel
-        JPanel panel1 = new JPanel();
-
+        final JPanel panel1 = new JPanel();
         // set border green
         panel1.setPreferredSize(new Dimension(500, 200));
         // set panel 1 as grid of 3 collumnts and 3 row
-        GridLayout gridLayout = new GridLayout(5, 2);
+        GridLayout gridLayout = new GridLayout(7, 2);
         // set horizontal gab
         gridLayout.setHgap(10);
         // set vertical gap
@@ -52,15 +52,23 @@ public class App {
         // add text to panel
         titePanel.add(titleLabel);
 
+        final JLabel categoryLabel = new JLabel("Category: ");
+        final String[] categoryOptions = { "Choose Option", "For Profit", "Non Profit" }; // set options
+        final JComboBox category = new JComboBox(categoryOptions); // create combobox for options
+        // set default value
+        category.setSelectedIndex(0);
+
         final JLabel companyNameLabel = new JLabel("Company Name");
         final JTextField companyNameField = new JTextField(40);
 
         final JLabel dateOfRegistrationLabel = new JLabel("Date of Registration");
         final JTextField dateOfRegistrationField = new JTextField(40);
 
+        // no of employees for profit companies
         final JLabel numberOfEmployeesLabel = new JLabel("Number of Employees");
         final JTextField numberOfEmployeesField = new JTextField(40);
 
+        // checkbox for non profit companies
         final JLabel isItCharitableLabel = new JLabel("Is it Charitable");
         final JCheckBox isItCharitableCheckBox = new JCheckBox();
         // scasle up checkbox
@@ -68,12 +76,13 @@ public class App {
         // set to unchecked
         isItCharitableCheckBox.setSelected(false);
 
-        // when submit is clicked show the data in a new window
+        // submit button
         final JLabel submitLabel = new JLabel("Add Company");
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(50, 100, 50, 20);
 
         // set font size
+        categoryLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         companyNameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         dateOfRegistrationLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         numberOfEmployeesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -81,12 +90,14 @@ public class App {
         submitLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 
         // set font size
+        category.setFont(new Font("Arial", Font.PLAIN, 20));
         companyNameField.setFont(new Font("Arial", Font.PLAIN, 20));
         dateOfRegistrationField.setFont(new Font("Arial", Font.PLAIN, 20));
         numberOfEmployeesField.setFont(new Font("Arial", Font.PLAIN, 20));
         submitButton.setFont(new Font("Arial", Font.PLAIN, 20));
 
         // set all labels to have the same size
+        categoryLabel.setPreferredSize(new Dimension(70, 10));
         companyNameLabel.setPreferredSize(new Dimension(70, 10));
         dateOfRegistrationLabel.setPreferredSize(new Dimension(70, 10));
         numberOfEmployeesLabel.setPreferredSize(new Dimension(70, 10));
@@ -94,6 +105,7 @@ public class App {
         submitLabel.setPreferredSize(new Dimension(70, 10));
 
         // set all fields to have the same size
+        category.setPreferredSize(new Dimension(150, 50));
         companyNameField.setPreferredSize(new Dimension(150, 10));
         dateOfRegistrationField.setPreferredSize(new Dimension(150, 10));
         numberOfEmployeesField.setPreferredSize(new Dimension(150, 10));
@@ -102,6 +114,7 @@ public class App {
         submitButton.setBounds(400, 400, 150, 15);
 
         // set all labes to be on the left side of the layout
+        categoryLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         companyNameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         dateOfRegistrationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         numberOfEmployeesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -109,23 +122,145 @@ public class App {
         submitLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // set all fields to be on the same side of the gridlayout
+        category.setAlignmentX(Component.RIGHT_ALIGNMENT);
         companyNameField.setAlignmentX(Component.RIGHT_ALIGNMENT);
         dateOfRegistrationField.setAlignmentX(Component.RIGHT_ALIGNMENT);
         numberOfEmployeesField.setAlignmentX(Component.RIGHT_ALIGNMENT);
         isItCharitableCheckBox.setAlignmentX(Component.RIGHT_ALIGNMENT);
         submitButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
+        // allign the content inside the panel in the center
+        panel1.setAlignmentY(Component.CENTER_ALIGNMENT);
+        panel1.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        if (category.getSelectedIndex() == 0) {
+            submitButton.setEnabled(false);
+            companyNameField.setEditable(false);
+            dateOfRegistrationField.setEditable(false);
+            numberOfEmployeesField.setEditable(false);
+            isItCharitableCheckBox.setEnabled(false);
+        } else {
+            submitButton.setEnabled(true);
+            companyNameField.setEditable(true);
+            dateOfRegistrationField.setEditable(true);
+            numberOfEmployeesField.setEditable(true);
+            isItCharitableCheckBox.setEnabled(true);
+        }
+
+        // add action listern on fields
+        companyNameField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // if fields have values dont allow category to change
+                if (companyNameField.getText().length() > 0 || dateOfRegistrationField.getText().length() > 0
+                        || numberOfEmployeesField.getText().length() > 0) {
+                    // displable choose category
+                    category.setEnabled(false);
+                } else {
+                    // enable choose category
+                    category.setEnabled(true);
+                }
+            }
+        });
+
+        // if the category is is on default value, disable the submit button and make
+        // all other filed uneditable
+        category.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // if fields have values dont allow category to change
+                if (companyNameField.getText().length() > 0 || dateOfRegistrationField.getText().length() > 0
+                        || numberOfEmployeesField.getText().length() > 0) {
+
+                    // show error message
+                    JOptionPane.showMessageDialog(frame,
+                            "Please submit the current company first before changing, or clear the fileds!");
+                } else {
+
+                    if (category.getSelectedIndex() == 0) {
+                        submitButton.setEnabled(false);
+                        companyNameField.setEditable(false);
+                        dateOfRegistrationField.setEditable(false);
+                        numberOfEmployeesField.setEditable(false);
+                        isItCharitableCheckBox.setEnabled(false);
+                    } else {
+                        submitButton.setEnabled(true);
+                        companyNameField.setEditable(true);
+                        dateOfRegistrationField.setEditable(true);
+                        numberOfEmployeesField.setEditable(true);
+                        isItCharitableCheckBox.setEnabled(true);
+                    }
+
+                    // if company is for profit, add number of employees field before submit button
+                    if (category.getSelectedIndex() == 1) {
+                        // remove submit button and field
+                        panel1.remove(submitLabel);
+                        panel1.remove(submitButton);
+                        // add the number of employees field
+                        panel1.add(numberOfEmployeesLabel);
+                        panel1.add(numberOfEmployeesField);
+                        // add the submit button
+                        panel1.add(submitLabel);
+                        panel1.add(submitButton);
+                        // remove the checkbox
+                        panel1.remove(isItCharitableLabel);
+                        panel1.remove(isItCharitableCheckBox);
+                    } else if (category.getSelectedIndex() == 2) {
+                        // remove submit button and field
+                        panel1.remove(submitLabel);
+                        panel1.remove(submitButton);
+                        // add the checkbox
+                        panel1.add(isItCharitableLabel);
+                        panel1.add(isItCharitableCheckBox);
+                        // add the submit button
+                        panel1.add(submitLabel);
+                        panel1.add(submitButton);
+                        // remove the number of employees field
+                        panel1.remove(numberOfEmployeesLabel);
+                        panel1.remove(numberOfEmployeesField);
+                    }
+
+                    // re render frame
+                    frame.revalidate();
+                    frame.repaint();
+
+                }
+            }
+        });
+
         // add the fields to the panel to the right and labels to the left
+        panel1.add(categoryLabel);
+        panel1.add(category);
         panel1.add(companyNameLabel);
         panel1.add(companyNameField);
         panel1.add(dateOfRegistrationLabel);
         panel1.add(dateOfRegistrationField);
-        panel1.add(numberOfEmployeesLabel);
-        panel1.add(numberOfEmployeesField);
-        panel1.add(isItCharitableLabel);
-        panel1.add(isItCharitableCheckBox);
+
+        // if company is for profit, add number of employees field
+        if (category.getSelectedIndex() == 1) {
+            panel1.add(numberOfEmployeesLabel);
+            panel1.add(numberOfEmployeesField);
+        } else if (category.getSelectedIndex() == 2) {
+            panel1.add(isItCharitableLabel);
+            panel1.add(isItCharitableCheckBox);
+        }
+
         panel1.add(submitLabel);
         panel1.add(submitButton);
+
+        // set preferred size of panel 1
+        panel1.setPreferredSize(new Dimension(450, 250));
+
+        // set min size of panel 1
+        panel1.setMinimumSize(new Dimension(400, 200));
+
+        // set max size of panel 1
+        panel1.setMaximumSize(new Dimension(550, 250));
+
+        // set max for title panel
+        titePanel.setMaximumSize(new Dimension(550, 50));
+
+        /****************** PANEL 2 ******************/
 
         // create second panel
         JPanel panel2 = new JPanel();
@@ -134,7 +269,7 @@ public class App {
         // set background
         panel2.setBackground(Color.GRAY);
         // set size
-        panel2.setPreferredSize(new Dimension(550, 300));
+        panel2.setPreferredSize(new Dimension(650, 300));
         panel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panel2.setBorder(BorderFactory.createRaisedBevelBorder());
         // set round border
@@ -144,7 +279,7 @@ public class App {
         JLabel titleLabel2 = new JLabel("List of Companies");
         titleLabel2.setFont(new Font("Arial", Font.PLAIN, 20));
         // set height
-        titleLabel2.setPreferredSize(new Dimension(550, 50));
+        titleLabel2.setPreferredSize(new Dimension(650, 30));
         // set empty bnordr
         titleLabel2.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         // add title to panel 2
@@ -166,7 +301,9 @@ public class App {
         // add scroll bar
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setPreferredSize(new Dimension(550, 200));
+        scrollPane.setPreferredSize(new Dimension(600, 200));
+        // alogn center
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // add the scroll pane to the panel
         panel2.add(scrollPane);
@@ -175,24 +312,17 @@ public class App {
         scrollPane.setViewportView(textArea);
 
         // fix size of pannel 2
-        panel2.setMinimumSize(new Dimension(400, 100));
-        panel2.setMaximumSize(new Dimension(550, 400));
-
-        // set max size of panel 1
-        panel1.setMaximumSize(new Dimension(550, 200));
-
-        // set max for title panel
-        titePanel.setMaximumSize(new Dimension(550, 50));
+        panel2.setMinimumSize(new Dimension(500, 200));
+        panel2.setMaximumSize(new Dimension(650, 400));
 
         // close button
         JButton closeButton = new JButton("Close");
-        closeButton.setFont(new Font("Arial", Font.PLAIN, 20));
-        closeButton.setPreferredSize(new Dimension(100, 20));
-        closeButton.setBounds(400, 400, 150, 15);
-        // alight left
-        closeButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        // add close button to panel 2
-        closeButton.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 20));
+        closeButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        closeButton.setBounds(50, 100, 90, 30);
+        closeButton.setPreferredSize(new Dimension(90, 30));
+        // align center
+        closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         // add evvent listner for close button
         closeButton.addActionListener(new ActionListener() {
             @Override
@@ -212,13 +342,18 @@ public class App {
         containerPanel.add(panel2);
 
         // set frame size
-        frame.setSize(650, 650);
+        frame.setSize(700, 500);
+        // SET FRAME MAX SIZE
+        frame.setMaximumSize(new Dimension(700, 500));
+        // set frame min size
+        frame.setMinimumSize(new Dimension(700, 500));
+        // set frame to non resizable
+        frame.setResizable(false);
 
         // add the container panel to the frame
         frame.add(containerPanel);
-
-        frame.pack();
-        frame.setVisible(true);
+        frame.pack(); // pack the frame
+        frame.setVisible(true); // set frame visible
 
         // set frame close
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -232,37 +367,54 @@ public class App {
                 String dateOfRegistration = dateOfRegistrationField.getText();
                 String numberOfEmployees = numberOfEmployeesField.getText();
                 String isItCharitable = isItCharitableCheckBox.isSelected() ? "Yes" : "No";
+                String categ = categoryOptions[category.getSelectedIndex()];
 
                 // write the data to file txt
                 File file = new File("company.txt");
-                FileWriter fr;
-                try {
-                    fr = new FileWriter(file, true);
-                } catch (IOException e1) {
-                    System.out.println("Error writing to file");
-                    return;
+
+                // check if file exist (if not create a new file)
+                if (!file.exists()) {
+                    try {
+                        file.createNewFile();
+                    } catch (IOException e1) {
+                        System.out.println("Error creating file");
+                    }
                 }
 
-                BufferedWriter br = new BufferedWriter(fr);
-
                 try {
+                    FileWriter fr = new FileWriter(file, true);
+                    BufferedWriter br = new BufferedWriter(fr);
+
+                    br.write("Category: " + categ + "\n");
                     br.write("Company Name: " + companyName + "\n");
                     br.write("Date of Registration: " + dateOfRegistration + "\n");
-                    br.write("Number of Employees: " + numberOfEmployees + "\n");
-                    br.write("Is it Charitable: " + isItCharitable + "\n");
+
+                    if (categ == "For Profit") {
+                        br.write("Number of Employees: " + numberOfEmployees + "\n");
+                    } else {
+                        br.write("Is it Charitable: " + isItCharitable + "\n");
+                    }
+
                     br.write("\n----------------------------------------------------------------------------\n");
 
                     br.close();
                     fr.close();
+
+                    System.out.println("Writting successful!");
                 } catch (IOException e1) {
                     System.out.println("Error writing to file");
                 }
 
                 // add text to panel 2
-                textArea.append("Company Name: " + companyName + "\t");
-                textArea.append("Date of Registration: " + dateOfRegistration + "\t\n");
-                textArea.append("Number of Employees: " + numberOfEmployees + "\t");
-                textArea.append("Is it Charitable: " + isItCharitable + "\t");
+                textArea.append("Category: " + categ + "\t");
+                textArea.append("Company Name: " + companyName + "\t\n");
+                textArea.append("Date of Registration: " + dateOfRegistration + "\t");
+
+                if (categ == "For Profit") {
+                    textArea.append("Number of Employees: " + numberOfEmployees + "\t");
+                } else {
+                    textArea.append("Is it Charitable: " + isItCharitable + "\t");
+                }
                 textArea.append("\n----------------------------------------------------------------------------\n");
             }
         });

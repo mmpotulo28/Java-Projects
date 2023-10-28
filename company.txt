@@ -10,3 +10,230 @@ Number of Employees: 100
 Is it Charitable: No
 
 ----------------------------------------------------------------------------
+Company Name: CPUT
+Date of Registration: 13 OCT 2013
+Number of Employees: 1631
+Is it Charitable: Yes
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: COUT
+Date of Registration: 12 OCT 2023
+Number of Employees: 130
+Is it Charitable: Yes
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: CPUT
+Date of Registration: 12 OCT 2013
+Number of Employees: 130
+Is it Charitable: Yes
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: CPUT
+Date of Registration: 12 OCT 2013
+Number of Employees: 130
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: CPUT
+Date of Registration: 12 OCT 2013
+Number of Employees: 130
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: CPUT
+Date of Registration: 12 OCT 2013
+Number of Employees: 130
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: 
+Date of Registration: 
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: CPUT
+Date of Registration: 12/07/2011
+Is it Charitable: Yes
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: CPUT
+Date of Registration: 12/07/2011
+Number of Employees: 515
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: 
+Date of Registration: 
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: Non Profit
+Company Name: 
+Date of Registration: 
+Is it Charitable: No
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
+Category: For Profit
+Company Name: 
+Date of Registration: 
+Number of Employees: 
+
+----------------------------------------------------------------------------
