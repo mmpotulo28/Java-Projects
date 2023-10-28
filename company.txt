@@ -1,5 +1,12 @@
-Company Name: CPUT
-Date of Registration: 13 OCT 2023
-Number of Employees: 651
+Company Name: Cput 
+Date of Registration: 21 Oct 2023
+Number of Employees: 10
 Is it Charitable: Yes
 
+----------------------------------------------------------------------------
+Company Name: Melade
+Date of Registration: 21 Nov 2023
+Number of Employees: 100
+Is it Charitable: No
+
+----------------------------------------------------------------------------
